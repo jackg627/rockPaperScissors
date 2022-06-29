@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        const selection = Array["rock", "paper", "scissors"]
+         let playerInput = prompt("Please enter either 'Rock', 'Paper', or 'Scissors'"); // Accepts input from user, define as "playerSelection"
+            // If user enters a number, print "You must enter either "Rock", "Paper", or "Scissors"
+        
+        let playerSelection = playerInput.toLowerCase();   // Convert user input to lowercase   
+            // If user enters any string other than "Rock", "Paper", or "Scissors", print "You must enter either 'Rock', 'Paper', or 'Scissors'"
+         
+        let computerSelection = _.sample(selection); // Generate random computer input, define as "computerSelection"
+                                            // Pass parameters into function playRound()
+        function playRound(playerSelection, computerSelection){    // Define rules of game in function playRound()
+            if(playerSelection === computerSelection) {result.textContent = "You Tie!"} //If playerSelection = computerSelection, print "You Tie!"
+            }
+            else if(playerSelection == "rock"){
+                if(computerSelection == "scissors") {
+                    result.textContent = "You Win!"
+                }
+                else{result.textContent = "You Lose!"}
+            }
+            else if(playerSelection == "paper"){
+                if(computerSelection == "rock") {
+                    result.textContent = "You Win!"
+                }
+                else{result.textContent = "You Lose!"}
+            }
+            else if(playerSelection == "scissors"){
+                if(computerSelection == "paper") {
+                    result.textContent = "You Win"
+                }
+                else{result.textContent = "You Lose!"}
+            }
+            else{result.textContent = "You must enter either 'Rock', 'Paper', or 'Scissors'"}
+    </script>
+</body>
+</html>
