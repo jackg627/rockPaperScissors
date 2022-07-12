@@ -1,45 +1,58 @@
-let myArray = ["rock", "paper", "scissors"];
+const choices = ["rock", "paper", "scissors"]
 
-
-function computerPlay() {
-    let computerSelection = myArray[Math.floor(Math.random()*myArray.length)];
-    return computerSelection
+function game() {
+   playRound() //play game, 5 rounds, console based
 }
 
-let playerSelection = "rock"
-let computerSelection = computerPlay()
+function playRound() {
+    const playerSelection = playerChoice();//player choice input
+    const computerSelection = computerChoice();
+    const winner = checkWinner(playerSelection, computerSelection);
+    console.log(winner);
+}
 
-function playRound(playerSelection, computerSelection) { 
-    
-    
+function playerChoice() {
+    let playerInput = prompt('Please enter either rock, paper, or scissors.');
+    while (playerInput == null) {
+        playerInput = prompt('You must enter either rock, paper, or scissors')
+    }
+    playerInput = playerInput.toLowerCase();
+    let check = checkPlayerInput(playerInput)
+    while(check == false) {
+        playerInput = prompt('You must enter either rock, paper, or scissors. Please use correct spelling. Not case-sensitive.'
+        );
+    while (playerInput == null) {
+            playerInput = prompt('You must enter either rock, paper, or scissors')
+    }
+        playerInput = playerInput.toLowerCase();
+        check = checkPlayerInput(playerInput);     //console.log(playerInput)
+    } 
+    return playerInput
+}
 
-    if (playerSelection == computerSelection){return "You Tie!"
-    }
-    else {
-        if (playerSelection == "rock"){
-            if (computerSelection == "scissors") {
-                return "You Win! Rock beats Scissors"
-            }
-            else {
-                return "You Lose! Paper beats Rock"
-            }
-        }
-    }
-    if (playerSelection == "paper"){
-            if (computerSelection == "rock") {
-                return "You Win! Paper beats Rock"
-            }
-            else {
-                return "You Lose! Scissors beats Paper"
-            }
-        }
-    }
-    if (playerSelection == "scissors"){
-            if (computerSelection == "paper") {
-                return "You Win! Scissors beats Paper"
-            }
-            else { if (computerSelection == "rock")
-                return "You Lose! Rock beats Scissors"
-            }
- }
-    
+function computerChoice() {
+    return choices[Math.floor(Math.random()*choices.length)];//generate random input from computer
+}
+
+function checkPlayerInput(playerInput) {
+    if(choices.includes(playerInput)) {
+        return true;
+    } 
+     return false;
+}
+
+function checkWinner(choiceP, choiceC){
+    if(choiceP === choiceC){
+        return 'Tie';
+    } else if(
+        (choiceP === "rock" && choiceC === "scissors") || 
+        (choiceP === "paper" && choiceC === "rock") || 
+        (choiceP === "scissors" && choiceC === "paper")
+        ){
+        return "You Won! "
+    } else{return "You Lost!"}
+}
+
+
+
+game();
